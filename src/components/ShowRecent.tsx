@@ -21,18 +21,17 @@ export default function ShowRecent(): JSX.Element {
   return (
     <>
       {recommendation?.map((x) => (
-      <div key = {x.id}>
-        <h1>{x.title}</h1>
-        <p>{x.author}</p>
-        <a href={x.url}>{x.url}</a>
-        <p>{x.rating}</p>
-        <p>{x.description}</p>
-        
-        {x.tags.map((x,idx)=><li key={idx}>{x}</li>)}
-      </div>
+        <div key={x.id}>
+          <h1>{x.title}</h1>
+          <p>{x.author}</p>
+          <a href={x.url}>{x.url}</a>
+          <p>{x.rating}</p>
+          <p>{x.description}</p>
 
-      
-        
+          {x.tags.map((x, idx) => (
+            <li key={idx}>{x}</li>
+          ))}
+        </div>
       ))}
     </>
   );
