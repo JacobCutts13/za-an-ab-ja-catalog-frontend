@@ -1,4 +1,4 @@
-import { greet } from "./utils/greet";
+// import { greet } from "./utils/greet";
 import ShowRecent from "./components/ShowRecent";
 
 function App(): JSX.Element {

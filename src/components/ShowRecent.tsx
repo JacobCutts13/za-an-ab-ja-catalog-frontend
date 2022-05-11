@@ -1,8 +1,8 @@
-import axios from "axios";
+// import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import { baseURL } from "../utils/urls";
-import { frontendURL } from "../utils/urls";
+// import { frontendURL } from "../utils/urls";
 import iRecentRecommendation from "../Interface";
 
 export default function ShowRecent(): JSX.Element {
@@ -16,7 +16,7 @@ export default function ShowRecent(): JSX.Element {
       setRecommendation(jsonBody);
     };
     fetchData();
-  }, [baseURL]);
+  }, []);
 
   return (
     <>
