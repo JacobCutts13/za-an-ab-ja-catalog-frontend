@@ -1,7 +1,12 @@
 import { greet } from "./utils/greet";
+import ShowRecent from "./components/ShowRecent";
 
 function App(): JSX.Element {
-  return <h1>{greet("World")}</h1>;
+  return (
+    <>
+      <ShowRecent />
+    </>
+  );
 }
 
 export default App;
