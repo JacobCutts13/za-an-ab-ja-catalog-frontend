@@ -1,5 +1,5 @@
-// import { greet } from "./utils/greet";
 import ShowRecent from "./components/ShowRecent";
+import "./style.css";
 
 function App(): JSX.Element {
   return (
