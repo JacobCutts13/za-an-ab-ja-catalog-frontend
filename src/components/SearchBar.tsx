@@ -39,9 +39,9 @@ const handleSearchClick = async ()  => {
         <option>title</option>
       </select>
       <button onClick={() => handleSearchClick()}>Search</button>
-    {filteredData?.map((data) => <div key={data.id}>{data.author}</div>)}
-    <button onClick={() => {setClearSearch(!clearSearch) 
+      <button onClick={() => {setClearSearch(!clearSearch) 
         setSearch("")}}>Clear Search</button>
+    {filteredData?.map((data) => <div key={data.id}>{data.author}</div>)}
     </>
   );
 }
