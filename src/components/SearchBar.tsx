@@ -7,11 +7,6 @@ export default function SearchBar(): JSX.Element {
   const [selector, setSelector] = useState<string>("All");
   const [filteredData, setFilteredData] = useState<iRecentRecommendation[]>();
 
-  const fetchAllData = async () => {
-    const response = await fetch(baseURL);
-    const jsonBody: iRecentRecommendation[] = await response.json();
-    return jsonBody;
-  };
 
   useEffect(() => {
     const fetchAllData = async () => {
