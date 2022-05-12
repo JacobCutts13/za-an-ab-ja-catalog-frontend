@@ -6,6 +6,7 @@ export default function SearchBar(): JSX.Element {
   const [search, setSearch] = useState<string>("");
   const [selector, setSelector] = useState<string>("All");
   const [filteredData, setFilteredData] = useState<iRecentRecommendation[]>();
+  const [clearSearch, setClearSearch] = useState <boolean>(false)
 
 
   useEffect(() => {
@@ -16,7 +17,7 @@ export default function SearchBar(): JSX.Element {
     };
       fetchAllData();
  
-  }, []);
+  }, [clearSearch]);
 
   console.log(baseURL + selector + "/" + search)
 
@@ -31,7 +32,7 @@ const handleSearchClick = async ()  => {
 
   return (
     <>
-      <input onChange={(e) => setSearch(e.target.value)}></input>
+      <input onChange={(e) => setSearch(e.target.value)} value={search}></input> 
       <select onChange={(e) => setSelector(e.target.value)} value={selector}>
         <option>All</option>
         <option>author</option>
@@ -39,6 +40,8 @@ const handleSearchClick = async ()  => {
       </select>
       <button onClick={() => handleSearchClick()}>Search</button>
     {filteredData?.map((data) => <div key={data.id}>{data.author}</div>)}
+    <button onClick={() => {setClearSearch(!clearSearch) 
+        setSearch("")}}>Clear Search</button>
     </>
   );
 }
