@@ -1,22 +1,27 @@
-body {
-  margin: 10px;
-}
-
 .recent-component {
   text-align: center;
 }
 
 .recent-slider {
+  cursor: grab;
+  overflow: hidden;
+  width: 80%;
+  margin: 100px auto;
+}
+.inner-recent-slider {
   display: flex;
-  flex-direction: row;
-  background-color: #fff;
 }
 
 .recommendation-tile {
   text-align: center;
   background-color: grey;
+  border-radius: 5%;
   margin: 0px 10px;
-  width: 33%;
+  min-width: 400px;
+  min-height: 600px;
+  margin: 5px 20px;
+  padding: 30px;
+  pointer-events: none;
 }
 
 .problems {
