@@ -22,6 +22,7 @@ export default function ShowSearchMatches(): JSX.Element {
   }, []);
 
   const handleExpand = (i: number) => {
+    setIsExpandedArray(isExpandedArray.fill(false));
     setIsExpandedArray([
       ...isExpandedArray.slice(0, i),
       !isExpandedArray[i],
