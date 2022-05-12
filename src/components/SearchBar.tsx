@@ -6,8 +6,7 @@ export default function SearchBar(): JSX.Element {
   const [search, setSearch] = useState<string>("");
   const [selector, setSelector] = useState<string>("All");
   const [filteredData, setFilteredData] = useState<iRecentRecommendation[]>();
-  const [clearSearch, setClearSearch] = useState <boolean>(false)
-
+  const [clearSearch, setClearSearch] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchAllData = async () => {
@@ -15,33 +14,39 @@ export default function SearchBar(): JSX.Element {
       const jsonBody: iRecentRecommendation[] = await response.json();
       setFilteredData(jsonBody);
     };
-      fetchAllData();
- 
+    fetchAllData();
   }, [clearSearch]);
 
-  console.log(baseURL + selector + "/" + search)
+  console.log(baseURL + selector + "/" + search);
 
-
-const handleSearchClick = async ()  => {
-    if (search !== ""){
-    const response = await fetch(baseURL + selector + "/" + search);
-    const jsonBody: iRecentRecommendation[] = await response.json();
-    setFilteredData(jsonBody);
+  const handleSearchClick = async () => {
+    if (search !== "") {
+      const response = await fetch(baseURL + selector + "/" + search);
+      const jsonBody: iRecentRecommendation[] = await response.json();
+      setFilteredData(jsonBody);
     }
-}
+  };
 
   return (
     <>
-      <input onChange={(e) => setSearch(e.target.value)} value={search}></input> 
+      <input onChange={(e) => setSearch(e.target.value)} value={search}></input>
       <select onChange={(e) => setSelector(e.target.value)} value={selector}>
         <option>All</option>
         <option>author</option>
         <option>title</option>
       </select>
       <button onClick={() => handleSearchClick()}>Search</button>
-      <button onClick={() => {setClearSearch(!clearSearch) 
-        setSearch("")}}>Clear Search</button>
-    {filteredData?.map((data) => <div key={data.id}>{data.author}</div>)}
+      <button
+        onClick={() => {
+          setClearSearch(!clearSearch);
+          setSearch("");
+        }}
+      >
+        Clear Search
+      </button>
+      {filteredData?.map((data) => (
+        <div key={data.id}>{data.author}</div>
+      ))}
     </>
   );
 }
