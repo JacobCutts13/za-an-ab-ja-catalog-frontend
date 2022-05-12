@@ -6,7 +6,7 @@ function App(): JSX.Element {
   return (
     <>
       <ShowRecent />
-      <SearchBar/>
+      <SearchBar />
     </>
   );
 }
