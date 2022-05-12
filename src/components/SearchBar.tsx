@@ -4,7 +4,7 @@ import iRecentRecommendation from "../Interface";
 
 export default function SearchBar(): JSX.Element {
   const [search, setSearch] = useState<string>("");
-  const [selector, setSelector] = useState<string>("");
+  const [selector, setSelector] = useState<string>("All");
   const [filteredData, setFilteredData] = useState<iRecentRecommendation[]>();
 
   const fetchAllData = async () => {
@@ -23,6 +23,8 @@ export default function SearchBar(): JSX.Element {
  
   }, []);
 
+  console.log(baseURL + selector + "/" + search)
+
 
 const handleSearchClick = async ()  => {
     const response = await fetch(baseURL + selector + "/" + search);
@@ -39,7 +41,7 @@ const handleSearchClick = async ()  => {
         <option>title</option>
       </select>
       <button onClick={() => handleSearchClick()}>Search</button>
-
+    {filteredData?.map((data) => <div key={data.id}>{data.author}</div>)}
     </>
   );
 }
