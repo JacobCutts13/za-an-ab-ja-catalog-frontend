@@ -22,9 +22,11 @@ export default function SearchBar(): JSX.Element {
 
 
 const handleSearchClick = async ()  => {
+    if (search !== ""){
     const response = await fetch(baseURL + selector + "/" + search);
     const jsonBody: iRecentRecommendation[] = await response.json();
     setFilteredData(jsonBody);
+    }
 }
 
   return (
