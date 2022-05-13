@@ -1,43 +1,33 @@
 /// import axios from "axios";
 import { useState, useEffect } from "react";
-import { baseURL } from "../utils/urls";
-// import { frontendURL } from "../utils/urls";
 import iRecentRecommendation from "../Interface";
 import { motion } from "framer-motion";
 
-export default function ShowSearchMatches(): JSX.Element {
-  const [searchRecommendation, setSearchRecommendation] =
-    useState<iRecentRecommendation[]>();
+interface IProps {
+  filteredData: iRecentRecommendation[];
+}
 
+export default function ShowSearchMatches(Props: IProps): JSX.Element {
   const [isExpandedArray, setIsExpandedArray] = useState<boolean[]>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch(baseURL + "recent");
-      const jsonBody: iRecentRecommendation[] = await response.json();
-      setSearchRecommendation(jsonBody);
-      setIsExpandedArray(new Array(jsonBody.length).fill(false));
-    };
-    fetchData();
-  }, []);
+    setIsExpandedArray(new Array(Props.filteredData.length).fill(false));
+  }, [Props.filteredData.length]);
 
   const handleExpand = (i: number) => {
-    setIsExpandedArray(isExpandedArray.fill(false));
-    setIsExpandedArray([
-      ...isExpandedArray.slice(0, i),
-      !isExpandedArray[i],
-      ...isExpandedArray.splice(-i),
-    ]);
+    const allFalseArray = new Array(isExpandedArray.length).fill(false);
+    allFalseArray[i] = true;
+    setIsExpandedArray(allFalseArray);
   };
 
   return (
     <div className="search-component">
       <h1>Search Results</h1>
       <div className="search-results">
-        {searchRecommendation?.map((x, i) => (
+        {Props.filteredData?.map((x, i) => (
           <motion.div
             layout
-            className={"search-tile " + x.content_type}
+            className={"search-tile " + x.content_type + " clickable"}
             key={x.id}
             onClick={() => handleExpand(i)}
           >

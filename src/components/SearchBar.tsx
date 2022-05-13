@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { baseURL } from "../utils/urls";
 import iRecentRecommendation from "../Interface";
+import ShowSearchMatches from "./ShowSearchMatches";
 
 export default function SearchBar(): JSX.Element {
   const [search, setSearch] = useState<string>("");
@@ -44,9 +45,9 @@ export default function SearchBar(): JSX.Element {
       >
         Clear Search
       </button>
-      {filteredData?.map((data) => (
-        <div key={data.id}>{data.author}</div>
-      ))}
+      {filteredData !== undefined && (
+        <ShowSearchMatches filteredData={filteredData} />
+      )}
     </>
   );
 }
