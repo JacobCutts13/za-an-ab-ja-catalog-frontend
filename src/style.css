@@ -41,11 +41,20 @@
   background-color: #fff;
 }
 
+.search-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+}
+
 .search-tile {
   border-radius: 5%;
   margin: 5px;
+  position: relative;
+  text-align: center;
   width: 350px;
   height: auto;
-  display: inline-block;
-  text-align: center;
+}
+
+.clickable {
+  cursor: pointer;
 }
