@@ -1,6 +1,6 @@
 /// import axios from "axios";
 import { useState, useEffect } from "react";
-import iRecentRecommendation from "../Interface";
+import {iRecentRecommendation} from "../Interface";
 import { motion } from "framer-motion";
 
 interface IProps {

@@ -1,4 +1,4 @@
-export default interface iPostRecommendation {
+export interface iPostRecommendation {
   author: string | null;
   url: string;
   title: string;
@@ -10,7 +10,7 @@ export default interface iPostRecommendation {
   build_week: number;
 }
 
-export default interface iRecentRecommendation {
+export interface iRecentRecommendation {
   id: number;
   user_id: number | null;
   author: string | null;
@@ -23,4 +23,11 @@ export default interface iRecentRecommendation {
   rating: string;
   reason: string | null;
   build_week: number;
+}
+
+export interface iUserData {
+  name:string;
+  user_id:number;
+  is_faculty:boolean;
+  saved_recommendations:number[];
 }
