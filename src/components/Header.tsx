@@ -19,7 +19,12 @@ export default function Header(): JSX.Element {
   return (
     <div className="header">
       <h1>Recommendations Navbar</h1>
-
+      <div className="select-sign-in">
+      <select >
+        <option>Select user</option>
+        {users.map((userName) => <option key={userName.user_id}>{userName.name}</option>)}
+      </select>
+      </div>
     </div>
   );
 }
