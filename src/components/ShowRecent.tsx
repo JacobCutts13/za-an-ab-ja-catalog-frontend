@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { baseURL } from "../utils/urls";
 // import { frontendURL } from "../utils/urls";
-import {iRecentRecommendation} from "../Interface";
+import { iRecentRecommendation } from "../Interface";
 import { motion } from "framer-motion";
 
 export default function ShowRecent(): JSX.Element {

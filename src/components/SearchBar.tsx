@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { baseURL } from "../utils/urls";
-import {iRecentRecommendation} from "../Interface";
+import { iRecentRecommendation } from "../Interface";
 import ShowSearchMatches from "./ShowSearchMatches";
 
 export default function SearchBar(): JSX.Element {

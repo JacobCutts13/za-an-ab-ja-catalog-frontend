@@ -26,8 +26,8 @@ export interface iRecentRecommendation {
 }
 
 export interface iUserData {
-  name:string;
-  user_id:number;
-  is_faculty:boolean;
-  saved_recommendations:number[];
+  name: string;
+  user_id: number;
+  is_faculty: boolean;
+  saved_recommendations: number[];
 }
