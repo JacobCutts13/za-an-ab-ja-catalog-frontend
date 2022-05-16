@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { baseURL } from "../utils/urls";
 import { iRecentRecommendation } from "../Interface";
 import ShowSearchMatches from "./ShowSearchMatches";
+import PopularTags from "./PopularTags";
 
 export default function SearchBar(): JSX.Element {
   const [search, setSearch] = useState<string>("");
@@ -51,6 +52,7 @@ export default function SearchBar(): JSX.Element {
       >
         Clear Search
       </button>
+      <PopularTags setFilteredData={setFilteredData} />
       {filteredData !== undefined && (
         <ShowSearchMatches filteredData={filteredData} />
       )}

@@ -58,3 +58,19 @@
 .clickable {
   cursor: pointer;
 }
+
+.popularTags {
+  display: inline;
+
+  margin: 10px;
+  justify-content: center;
+
+  font-size: 30px;
+  border: 1px solid;
+  border-radius: 3px;
+  text-align: center;
+  padding: 10px;
+  background-color: rgb(231, 142, 142);
+  border-radius: 10px;
+  text-align: center;
+}
