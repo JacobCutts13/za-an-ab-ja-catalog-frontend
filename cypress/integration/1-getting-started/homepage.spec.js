@@ -19,12 +19,12 @@ describe('My First Test', () => {
     cy.contains("Recent Recommendations")
   })
   it('Should load recommendation tiles with tags', () => {
-    cy.get(".recommendation-tile").contains("#")
+    cy.wait(1000).get(".recommendation-tile").contains("#")
   })
   it('Clicking on a tile should show description', () => {
     cy.get(".search-tile").children(".tags").eq(0).click().get(".search-tile").eq(0).should("be.visible")
   })
-  // it('Changes to the search bar should be reflected in the search results', () => {
-  //   cy.get("input").type("javascript").wait(100).get(".search-submit").click()
-  // })
+  it('When searching a word, the word should appear in all search results', () => {
+    cy.get("input").type("Neill").wait(100).get(".search-submit").click().get(".search-tile").contains("Neill")
+  })
 })

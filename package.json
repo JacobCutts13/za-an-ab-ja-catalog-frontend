@@ -19,7 +19,8 @@
     "test": "react-scripts test --watchAll=false",
     "test:watch": "react-scripts test",
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "start:cypress": "run cypress open"
   },
   "browserslist": {
     "production": [
