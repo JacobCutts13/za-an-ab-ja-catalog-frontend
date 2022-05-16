@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { baseURL } from "../utils/urls";
-import iRecentRecommendation from "../Interface";
+import {iRecentRecommendation} from "../Interface";
 
 interface IProps {
   setFilteredData: React.Dispatch<
