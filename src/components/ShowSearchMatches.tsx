@@ -45,7 +45,7 @@ export default function ShowSearchMatches(Props: IProps): JSX.Element {
             </div>
 
             {isExpandedArray[i] && (
-              <motion.div layout>
+              <motion.div layout className="search-tile-description">
                 <p>{x.description}</p>
               </motion.div>
             )}

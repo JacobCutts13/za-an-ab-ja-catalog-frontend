@@ -30,13 +30,13 @@ export default function SearchBar(): JSX.Element {
 
   return (
     <>
-      <input onChange={(e) => setSearch(e.target.value)} value={search}></input>
+      <input onChange={(e) => setSearch(e.target.value)} value={search} className="search-input"></input>
       <select onChange={(e) => setSelector(e.target.value)} value={selector}>
         <option>All</option>
         <option>author</option>
         <option>title</option>
       </select>
-      <button onClick={() => handleSearchClick()}>Search</button>
+      <button onClick={() => handleSearchClick()} className="search-submit">Search</button>
       <button
         onClick={() => {
           setClearSearch(!clearSearch);
