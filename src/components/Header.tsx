@@ -23,10 +23,10 @@ export default function Header(): JSX.Element {
     getUsers();
   }, []);
 
-  const filterUsersByName = (name: string):iUserData => {
+  const filterUsersByName = (name: string): iUserData => {
     const userObject = users.find((user) => user.name === name);
-    if (userObject === undefined){
-      return emptyUserData
+    if (userObject === undefined) {
+      return emptyUserData;
     }
     return userObject;
   };
@@ -35,8 +35,15 @@ export default function Header(): JSX.Element {
     <div className="header">
       <h1>Recommendations Navbar</h1>
       <div className="select-sign-in">
-        {loggedIn.name !== "" && <> <h3>Logged in as {loggedIn.name}</h3> 
-        <button onClick={() => setLoggedIn(emptyUserData)}>Log Out</button> </> }{" "}
+        {loggedIn.name !== "" && (
+          <>
+            {" "}
+            <h3>Logged in as {loggedIn.name}</h3>
+            <button onClick={() => setLoggedIn(emptyUserData)}>
+              Log Out
+            </button>{" "}
+          </>
+        )}{" "}
         {loggedIn.name === "" && (
           <select
             onChange={(e) => setLoggedIn(filterUsersByName(e.target.value))}
