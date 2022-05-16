@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { baseURL } from "../utils/urls";
 import { iUserData } from "../Interface";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 export default function Header(): JSX.Element {
@@ -42,6 +43,8 @@ export default function Header(): JSX.Element {
             <button onClick={() => setLoggedIn(emptyUserData)}>
               Log Out
             </button>{" "}
+            <Link to = "/post">Post</Link>
+            <Link to ="/saved">Saved</Link>
           </>
         )}{" "}
         {loggedIn.name === "" && (
