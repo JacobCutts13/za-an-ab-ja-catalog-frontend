@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { baseURL } from "../utils/urls";
 import { iUserData } from "../Interface";
 import { Link } from "react-router-dom";
+import PopUpPost from "./PopUpPost";
 
 export default function Header(): JSX.Element {
   const emptyUserData = {
@@ -57,7 +58,7 @@ export default function Header(): JSX.Element {
           </select>
         )}
       </div>
-
+      <PopUpPost user_id={loggedIn.user_id} />
       {console.log(loggedIn)}
     </div>
   );
