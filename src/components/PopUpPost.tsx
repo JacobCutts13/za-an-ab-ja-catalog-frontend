@@ -3,6 +3,8 @@ import axios from "axios";
 import { useState } from "react";
 import { iPostRecommendation } from "../Interface";
 import { baseURL } from "../utils/urls";
+import { contentList } from "../utils/optionsList";
+import { recommendationList } from "../utils/optionsList";
 
 interface Props {
   user_id: number;
@@ -38,7 +40,7 @@ export default function PopUpPost(props: Props): JSX.Element {
       await axios.post(baseURL, postData);
       setPostData(emptyPostData);
     } else {
-      window.Error("please fill the required fields before submitting");
+      window.alert("please fill the required fields before submitting");
     }
   }
 
@@ -104,6 +106,32 @@ export default function PopUpPost(props: Props): JSX.Element {
             }
           ></input>
 
+          <select
+            onChange={(e) =>
+              setPostData((prevState) => ({
+                ...prevState,
+                recommendation: e.target.value,
+              }))
+            }
+          >
+            {recommendationList.map((rec, idx) => (
+              <option key={idx}>{rec}</option>
+            ))}
+          </select>
+
+          <select
+            onChange={(e) =>
+              setPostData((prevState) => ({
+                ...prevState,
+                content_type: e.target.value,
+              }))
+            }
+          >
+            {contentList.map((content, idx) => (
+              <option key={idx}>{content}</option>
+            ))}
+          </select>
+
           <br />
           <h4>Add Tag</h4>
           <input
@@ -113,11 +141,15 @@ export default function PopUpPost(props: Props): JSX.Element {
           ></input>
           <button
             onClick={() => {
-              setPostData((prevState) => ({
-                ...prevState,
-                tags: [...prevState.tags, tag],
-              }));
-              setTag("");
+              if (tag === "") {
+                window.alert("empty tag not accepted");
+              } else {
+                setPostData((prevState) => ({
+                  ...prevState,
+                  tags: [...prevState.tags, tag],
+                }));
+                setTag("");
+              }
             }}
           >
             add tag
