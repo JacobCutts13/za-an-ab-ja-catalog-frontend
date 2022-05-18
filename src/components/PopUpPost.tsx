@@ -1,10 +1,11 @@
 import Popup from "reactjs-popup";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { iPostRecommendation } from "../Interface";
 import { baseURL } from "../utils/urls";
 import { contentList } from "../utils/optionsList";
 import { recommendationList } from "../utils/optionsList";
+import { buildWeekList } from "../utils/optionsList";
 
 interface Props {
   user_id: number;
@@ -18,17 +19,18 @@ export default function PopUpPost(props: Props): JSX.Element {
     title: "",
     description: "",
     tags: [],
-    content_type: "",
-    rating: "",
+    content_type: "book",
+    rating: "✅",
     reason: "",
-    build_week: -1,
+    build_week: 1,
   };
+  
 
   //   const handleChange = (event: {target: {name:string, value: number|string}}) =>
   //     { const {name, value} = event.target;
   // setPostData((prevState => ({…prevState, [name]: value})));
   //     }
-
+  
   const [postData, setPostData] = useState<iPostRecommendation>(emptyPostData);
   const [tag, setTag] = useState<string>("");
   async function submitClick() {
@@ -38,11 +40,20 @@ export default function PopUpPost(props: Props): JSX.Element {
       postData.tags.length !== 0
     ) {
       await axios.post(baseURL, postData);
-      setPostData(emptyPostData);
+      setPostData(emptyPostData)
     } else {
       window.alert("please fill the required fields before submitting");
     }
   }
+
+  useEffect(() => {
+    const updateUserID = () => {
+        setPostData((prevState) => ({
+            ...prevState,
+            user_id: props.user_id,
+          }))
+    };
+    updateUserID()},[props.user_id]);
 
   return (
     <Popup
@@ -58,6 +69,7 @@ export default function PopUpPost(props: Props): JSX.Element {
           <div className="header"> Modal Title </div>
           <input
             placeholder="Title"
+            value = {postData.title}
             onChange={(e) =>
               setPostData((prevState) => ({
                 ...prevState,
@@ -68,6 +80,7 @@ export default function PopUpPost(props: Props): JSX.Element {
 
           <input
             placeholder="Author"
+            
             onChange={(e) =>
               setPostData((prevState) => ({
                 ...prevState,
@@ -81,7 +94,7 @@ export default function PopUpPost(props: Props): JSX.Element {
             onChange={(e) =>
               setPostData((prevState) => ({
                 ...prevState,
-                URL: e.target.value,
+                url: e.target.value,
               }))
             }
           ></input>
@@ -131,6 +144,21 @@ export default function PopUpPost(props: Props): JSX.Element {
               <option key={idx}>{content}</option>
             ))}
           </select>
+
+          <select
+            onChange={(e) =>
+              setPostData((prevState) => ({
+                ...prevState,
+                build_week: parseInt(e.target.value),
+              }))
+            }
+          >
+            {buildWeekList.map((weekNumber, idx) => (
+              <option key={idx}>{weekNumber}</option>
+            ))}
+          </select>
+
+          
 
           <br />
           <h4>Add Tag</h4>

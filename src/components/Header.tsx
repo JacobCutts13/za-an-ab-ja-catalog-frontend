@@ -59,7 +59,7 @@ export default function Header(): JSX.Element {
         )}
       </div>
       <PopUpPost user_id={loggedIn.user_id} />
-      {console.log(loggedIn)}
+      {/* {console.log(loggedIn)} */}
     </div>
   );
 }
