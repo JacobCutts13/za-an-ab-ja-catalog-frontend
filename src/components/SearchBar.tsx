@@ -3,8 +3,14 @@ import { baseURL } from "../utils/urls";
 import { iRecentRecommendation } from "../Interface";
 import ShowSearchMatches from "./ShowSearchMatches";
 import PopularTags from "./PopularTags";
+import { iUserData } from "../Interface";
 
-export default function SearchBar(): JSX.Element {
+interface Props {
+  loggedIn: iUserData;
+  setLoggedIn: React.Dispatch<React.SetStateAction<iUserData>>;
+}
+
+export default function SearchBar(props: Props): JSX.Element {
   const [search, setSearch] = useState<string>("");
   const [selector, setSelector] = useState<string>("All");
   const [filteredData, setFilteredData] = useState<iRecentRecommendation[]>();
@@ -54,7 +60,11 @@ export default function SearchBar(): JSX.Element {
       </button>
       <PopularTags setFilteredData={setFilteredData} />
       {filteredData !== undefined && (
-        <ShowSearchMatches filteredData={filteredData} />
+        <ShowSearchMatches
+          filteredData={filteredData}
+          loggedIn={props.loggedIn}
+          setLoggedIn={props.setLoggedIn}
+        />
       )}
     </>
   );
