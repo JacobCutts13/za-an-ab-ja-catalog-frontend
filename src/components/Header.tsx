@@ -3,17 +3,15 @@ import { baseURL } from "../utils/urls";
 import { iUserData } from "../Interface";
 import { Link } from "react-router-dom";
 import PopUpPost from "./PopUpPost";
+import { emptyUserData } from "../utils/emptyUserData";
 
-export default function Header(): JSX.Element {
-  const emptyUserData = {
-    name: "",
-    user_id: -1,
-    is_faculty: false,
-    saved_recommendations: [],
-  };
+interface Props {
+  loggedIn: iUserData;
+  setLoggedIn: React.Dispatch<React.SetStateAction<iUserData>>;
+}
 
+export default function Header(props: Props): JSX.Element {
   const [users, setUsers] = useState<iUserData[]>([]);
-  const [loggedIn, setLoggedIn] = useState<iUserData>(emptyUserData);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -29,6 +27,8 @@ export default function Header(): JSX.Element {
     if (userObject === undefined) {
       return emptyUserData;
     }
+    
+    console.log({users})
     return userObject;
   };
 
@@ -36,20 +36,24 @@ export default function Header(): JSX.Element {
     <div className="header">
       <h1>Recommendations Navbar</h1>
       <div className="select-sign-in">
-        {loggedIn.name !== "" && (
+        {props.loggedIn.name !== "" && (
           <>
             {" "}
-            <h3>Logged in as {loggedIn.name}</h3>
-            <button onClick={() => setLoggedIn(emptyUserData)}>
+            <h3>Logged in as {props.loggedIn.name}</h3>
+            <button onClick={() => props.setLoggedIn(emptyUserData)}>
               Log Out
             </button>{" "}
-            <Link to="/post">Post</Link>
             <Link to="/saved">Saved</Link>
           </>
         )}{" "}
-        {loggedIn.name === "" && (
+        {props.loggedIn.name === "" && (
           <select
-            onChange={(e) => setLoggedIn(filterUsersByName(e.target.value))}
+            onChange={(e) => {
+              props.setLoggedIn(filterUsersByName(e.target.value))
+              console.log("from Header", filterUsersByName(e.target.value))
+              console.log(props.loggedIn.saved_recommendations)
+            }
+            }
           >
             <option>Select user</option>
             {users.map((userName) => (
@@ -58,7 +62,9 @@ export default function Header(): JSX.Element {
           </select>
         )}
       </div>
-      <PopUpPost user_id={loggedIn.user_id} />
+      {props.loggedIn.user_id !== -1 && (
+        <PopUpPost user_id={props.loggedIn.user_id} />
+      )}
       {/* {console.log(loggedIn)} */}
     </div>
   );

@@ -1,12 +1,15 @@
 import ShowRecent from "./components/ShowRecent";
 import SearchBar from "./components/SearchBar";
 import Header from "./components/Header";
-import Post from "./components/Post";
 import Saved from "./components/Saved";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import "./style.css";
+import { emptyUserData } from "./utils/emptyUserData";
+import { useState } from "react";
+import { iUserData } from "./Interface";
 
 function App(): JSX.Element {
+  const [loggedIn, setLoggedIn] = useState<iUserData>(emptyUserData);
   return (
     <>
       <BrowserRouter>
@@ -15,11 +18,11 @@ function App(): JSX.Element {
             path="/"
             element={
               <>
-                <Header /> <ShowRecent /> <SearchBar />
+                <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />{" "}
+                <ShowRecent loggedIn={loggedIn} setLoggedIn={setLoggedIn}/> <SearchBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
               </>
             }
           />
-          <Route path="/post" element={<Post />} />
           <Route path="/saved" element={<Saved />} />
         </Routes>
       </BrowserRouter>

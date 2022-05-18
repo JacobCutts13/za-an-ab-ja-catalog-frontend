@@ -109,3 +109,7 @@
   border-radius: 18px;
   border: 1px solid #cfcece;
 }
+
+.checked {
+  color: yellow;
+}
