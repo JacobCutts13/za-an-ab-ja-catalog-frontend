@@ -43,7 +43,6 @@ export default function Header(): JSX.Element {
             <button onClick={() => setLoggedIn(emptyUserData)}>
               Log Out
             </button>{" "}
-            <Link to="/post">Post</Link>
             <Link to="/saved">Saved</Link>
           </>
         )}{" "}
@@ -58,7 +57,7 @@ export default function Header(): JSX.Element {
           </select>
         )}
       </div>
-      <PopUpPost user_id={loggedIn.user_id} />
+      {loggedIn.user_id !== -1 && <PopUpPost user_id={loggedIn.user_id} />}
       {/* {console.log(loggedIn)} */}
     </div>
   );

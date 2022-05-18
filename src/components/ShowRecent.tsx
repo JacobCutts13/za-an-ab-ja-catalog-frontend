@@ -4,12 +4,18 @@ import { baseURL } from "../utils/urls";
 // import { frontendURL } from "../utils/urls";
 import { iRecentRecommendation } from "../Interface";
 import { motion } from "framer-motion";
+import axios from "axios";
 
-export default function ShowRecent(): JSX.Element {
+interface iProps {
+  user_id: number;
+}
+
+export default function ShowRecent(props: iProps): JSX.Element {
   const [recommendation, setRecommendation] =
     useState<iRecentRecommendation[]>();
 
   const [sliderWidth, setSliderWidth] = useState<number>(0);
+  const [saved, setSaved] = useState({ user_id: -1, post_id: -1 });
 
   const recentSlider = useRef<HTMLDivElement>(null);
 
@@ -29,6 +35,14 @@ export default function ShowRecent(): JSX.Element {
     }
   }, []);
 
+  async function saveRecommendation(id: number, saved_rec: number) {
+    const result = await axios.put(
+      baseURL + "users/saved/" + id + "/" + saved_rec
+    );
+    console.log(result);
+    //setSaved([...saved, )
+  }
+
   return (
     <div className="recent-component">
       <h1>Recent Recommendations</h1>
@@ -47,8 +61,13 @@ export default function ShowRecent(): JSX.Element {
               className={"recommendation-tile " + x.content_type}
               key={x.id}
             >
+              <div
+                className="fa fa-star checked"
+                onClick={() => saveRecommendation}
+              ></div>
               <h1>{x.title}</h1>
               <p>Author: {x.author}</p>
+
               <a href={x.url}>Vist</a>
               <p>{x.rating}</p>
               <p>{x.description}</p>
