@@ -30,17 +30,15 @@ export default function ShowRecent(props: Props): JSX.Element {
     };
     fetchData();
     if (recentSlider.current !== null) {
-      
       setSliderWidth(recentSlider.current.scrollWidth);
     }
   }, []);
 
   async function saveRecommendation(id: number, saved_rec: number) {
-   const result = await axios.put(
+    const result = await axios.put(
       baseURL + "users/saved/" + id + "/" + saved_rec
     );
-    props.setLoggedIn(result.data[0])
-    
+    props.setLoggedIn(result.data[0]);
   }
 
   return (
@@ -60,12 +58,19 @@ export default function ShowRecent(props: Props): JSX.Element {
             <motion.div
               className={"recommendation-tile " + x.content_type}
               key={x.id}
-            >{ props.loggedIn.user_id!==-1 &&
-              <div
-                className={props.loggedIn.saved_recommendations.includes(x.id)?"fa fa-star checked":"fa fa-star"}
-                onClick={() => saveRecommendation(props.loggedIn.user_id, x.id)}
-              ></div>
-            }
+            >
+              {props.loggedIn.user_id !== -1 && (
+                <div
+                  className={
+                    props.loggedIn.saved_recommendations.includes(x.id)
+                      ? "fa fa-star checked"
+                      : "fa fa-star"
+                  }
+                  onClick={() =>
+                    saveRecommendation(props.loggedIn.user_id, x.id)
+                  }
+                ></div>
+              )}
               <h1>{x.title}</h1>
               <p>Author: {x.author}</p>
 

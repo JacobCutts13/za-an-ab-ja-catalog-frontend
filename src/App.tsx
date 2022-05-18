@@ -19,7 +19,8 @@ function App(): JSX.Element {
             element={
               <>
                 <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />{" "}
-                <ShowRecent loggedIn={loggedIn} setLoggedIn={setLoggedIn}/> <SearchBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+                <ShowRecent loggedIn={loggedIn} setLoggedIn={setLoggedIn} />{" "}
+                <SearchBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
               </>
             }
           />

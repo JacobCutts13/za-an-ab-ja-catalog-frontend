@@ -27,8 +27,8 @@ export default function Header(props: Props): JSX.Element {
     if (userObject === undefined) {
       return emptyUserData;
     }
-    
-    console.log({users})
+
+    console.log({ users });
     return userObject;
   };
 
@@ -49,11 +49,10 @@ export default function Header(props: Props): JSX.Element {
         {props.loggedIn.name === "" && (
           <select
             onChange={(e) => {
-              props.setLoggedIn(filterUsersByName(e.target.value))
-              console.log("from Header", filterUsersByName(e.target.value))
-              console.log(props.loggedIn.saved_recommendations)
-            }
-            }
+              props.setLoggedIn(filterUsersByName(e.target.value));
+              console.log("from Header", filterUsersByName(e.target.value));
+              console.log(props.loggedIn.saved_recommendations);
+            }}
           >
             <option>Select user</option>
             {users.map((userName) => (
