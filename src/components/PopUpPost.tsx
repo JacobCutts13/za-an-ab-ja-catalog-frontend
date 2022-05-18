@@ -32,6 +32,7 @@ export default function PopUpPost(props: Props): JSX.Element {
 
   const [postData, setPostData] = useState<iPostRecommendation>(emptyPostData);
   const [tag, setTag] = useState<string>("");
+  
   async function submitClick() {
     if (
       postData.author !== "" &&
@@ -40,8 +41,10 @@ export default function PopUpPost(props: Props): JSX.Element {
     ) {
       await axios.post(baseURL, postData);
       setPostData(emptyPostData);
+      window.alert("your recommendation was successfully posted")
     } else {
       window.alert("please fill the required fields before submitting");
+      
     }
   }
 
@@ -80,6 +83,7 @@ export default function PopUpPost(props: Props): JSX.Element {
 
           <input
             placeholder="Author"
+            value = {postData.author!}
             onChange={(e) =>
               setPostData((prevState) => ({
                 ...prevState,
@@ -90,6 +94,7 @@ export default function PopUpPost(props: Props): JSX.Element {
 
           <input
             placeholder="URL"
+            value = {postData.url}
             onChange={(e) =>
               setPostData((prevState) => ({
                 ...prevState,
@@ -100,6 +105,7 @@ export default function PopUpPost(props: Props): JSX.Element {
 
           <input
             placeholder="Description"
+            value = {postData.description!}
             onChange={(e) =>
               setPostData((prevState) => ({
                 ...prevState,
@@ -110,6 +116,7 @@ export default function PopUpPost(props: Props): JSX.Element {
 
           <input
             placeholder="Reason"
+            value = {postData.reason!}
             onChange={(e) =>
               setPostData((prevState) => ({
                 ...prevState,
@@ -182,19 +189,12 @@ export default function PopUpPost(props: Props): JSX.Element {
           {postData.tags.map((tag, idx) => (
             <li key={idx}>{tag}</li>
           ))}
-          <div className="actions">
-            <button onClick={submitClick}>Submit Recommendation</button>
-            <button
-              className="button"
-              onClick={() => {
-                console.log("modal closed ");
-                close();
-              }}
-            >
-              {console.log(postData)}
-              close modal
-            </button>
+             <div className="actions">
+            <button onClick={()=>{submitClick();close()}}>Submit Recommendation</button>
+            
           </div>
+          
+             <br/>
         </div>
       )}
     </Popup>
