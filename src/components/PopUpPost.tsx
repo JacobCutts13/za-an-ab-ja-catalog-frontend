@@ -24,13 +24,12 @@ export default function PopUpPost(props: Props): JSX.Element {
     reason: "",
     build_week: 1,
   };
-  
 
   //   const handleChange = (event: {target: {name:string, value: number|string}}) =>
   //     { const {name, value} = event.target;
   // setPostData((prevState => ({…prevState, [name]: value})));
   //     }
-  
+
   const [postData, setPostData] = useState<iPostRecommendation>(emptyPostData);
   const [tag, setTag] = useState<string>("");
   async function submitClick() {
@@ -40,7 +39,7 @@ export default function PopUpPost(props: Props): JSX.Element {
       postData.tags.length !== 0
     ) {
       await axios.post(baseURL, postData);
-      setPostData(emptyPostData)
+      setPostData(emptyPostData);
     } else {
       window.alert("please fill the required fields before submitting");
     }
@@ -48,12 +47,13 @@ export default function PopUpPost(props: Props): JSX.Element {
 
   useEffect(() => {
     const updateUserID = () => {
-        setPostData((prevState) => ({
-            ...prevState,
-            user_id: props.user_id,
-          }))
+      setPostData((prevState) => ({
+        ...prevState,
+        user_id: props.user_id,
+      }));
     };
-    updateUserID()},[props.user_id]);
+    updateUserID();
+  }, [props.user_id]);
 
   return (
     <Popup
@@ -69,7 +69,7 @@ export default function PopUpPost(props: Props): JSX.Element {
           <div className="header"> Modal Title </div>
           <input
             placeholder="Title"
-            value = {postData.title}
+            value={postData.title}
             onChange={(e) =>
               setPostData((prevState) => ({
                 ...prevState,
@@ -80,7 +80,6 @@ export default function PopUpPost(props: Props): JSX.Element {
 
           <input
             placeholder="Author"
-            
             onChange={(e) =>
               setPostData((prevState) => ({
                 ...prevState,
@@ -157,8 +156,6 @@ export default function PopUpPost(props: Props): JSX.Element {
               <option key={idx}>{weekNumber}</option>
             ))}
           </select>
-
-          
 
           <br />
           <h4>Add Tag</h4>
