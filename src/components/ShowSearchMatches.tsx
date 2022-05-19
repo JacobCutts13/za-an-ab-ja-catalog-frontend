@@ -26,10 +26,17 @@ export default function ShowSearchMatches(props: IProps): JSX.Element {
   };
 
   async function saveRecommendation(id: number, saved_rec: number) {
-    const result = await axios.put(
-      baseURL + "users/saved/" + id + "/" + saved_rec
-    );
-    props.setLoggedIn(result.data[0]);
+    if (!props.loggedIn.saved_recommendations.includes(saved_rec)) {
+      const result = await axios.patch(
+        baseURL + "users/addsaved/" + id + "/" + saved_rec
+      );
+      props.setLoggedIn(result.data[0]);
+    } else {
+      const result = await axios.patch(
+        baseURL + "users/removesaved/" + id + "/" + saved_rec
+      );
+      props.setLoggedIn(result.data[0]);
+    }
   }
 
   return (
@@ -50,8 +57,7 @@ export default function ShowSearchMatches(props: IProps): JSX.Element {
                     : "fa fa-star"
                 }
                 onClick={() => {
-                  !props.loggedIn.saved_recommendations.includes(x.id) &&
-                    saveRecommendation(props.loggedIn.user_id, x.id);
+                  saveRecommendation(props.loggedIn.user_id, x.id);
                 }}
               ></div>
             )}
