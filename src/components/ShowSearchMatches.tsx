@@ -63,6 +63,7 @@ export default function ShowSearchMatches(props: IProps): JSX.Element {
             )}
             <h1>{x.title}</h1>
             <p>Author: {x.author}</p>
+            <p>{x.content_type}</p>
             <a href={x.url}>Vist</a>
             <p>{x.rating}</p>
 
