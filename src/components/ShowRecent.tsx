@@ -10,6 +10,7 @@ import { iUserData } from "../Interface";
 interface Props {
   loggedIn: iUserData;
   setLoggedIn: React.Dispatch<React.SetStateAction<iUserData>>;
+  togglePostRefresh: boolean;
 }
 
 export default function ShowRecent(props: Props): JSX.Element {
@@ -32,7 +33,7 @@ export default function ShowRecent(props: Props): JSX.Element {
     if (recentSlider.current !== null) {
       setSliderWidth(recentSlider.current.scrollWidth);
     }
-  }, []);
+  }, [props.togglePostRefresh]);
 
   async function saveRecommendation(id: number, saved_rec: number) {
     if (!props.loggedIn.saved_recommendations.includes(saved_rec)) {

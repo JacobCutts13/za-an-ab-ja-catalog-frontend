@@ -9,6 +9,8 @@ import { buildWeekList } from "../utils/optionsList";
 
 interface Props {
   user_id: number;
+  togglePostRefresh: boolean;
+  setTogglePostRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function PopUpPost(props: Props): JSX.Element {
@@ -40,11 +42,12 @@ export default function PopUpPost(props: Props): JSX.Element {
       postData.tags.length !== 0
     ) {
       const response = await axios.post(baseURL, postData);
-      if (typeof response.data === "string"){
+      if (typeof response.data === "string") {
         window.alert("This URL has already been posted!");
-      }else{
-        setPostData(emptyPostData); 
+      } else {
+        setPostData(emptyPostData);
         window.alert("your recommendation was successfully posted");
+        props.setTogglePostRefresh(!props.togglePostRefresh);
       }
     } else {
       window.alert("please fill the required fields before submitting");

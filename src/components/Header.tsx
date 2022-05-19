@@ -8,6 +8,8 @@ import { emptyUserData } from "../utils/emptyUserData";
 interface Props {
   loggedIn: iUserData;
   setLoggedIn: React.Dispatch<React.SetStateAction<iUserData>>;
+  togglePostRefresh: boolean;
+  setTogglePostRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Header(props: Props): JSX.Element {
@@ -27,8 +29,6 @@ export default function Header(props: Props): JSX.Element {
     if (userObject === undefined) {
       return emptyUserData;
     }
-
-    console.log({ users });
     return userObject;
   };
 
@@ -52,8 +52,6 @@ export default function Header(props: Props): JSX.Element {
             value={props.loggedIn.name}
             onChange={(e) => {
               props.setLoggedIn(filterUsersByName(e.target.value));
-              console.log("from Header", filterUsersByName(e.target.value));
-              console.log(props.loggedIn.saved_recommendations);
             }}
           >
             <option>Select user</option>
@@ -64,9 +62,12 @@ export default function Header(props: Props): JSX.Element {
         )}
       </div>
       {props.loggedIn.user_id !== -1 && (
-        <PopUpPost user_id={props.loggedIn.user_id} />
+        <PopUpPost
+          user_id={props.loggedIn.user_id}
+          togglePostRefresh={props.togglePostRefresh}
+          setTogglePostRefresh={props.setTogglePostRefresh}
+        />
       )}
-      {/* {console.log(loggedIn)} */}
     </div>
   );
 }

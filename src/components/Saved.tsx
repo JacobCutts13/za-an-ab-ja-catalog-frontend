@@ -8,10 +8,11 @@ import Header from "./Header";
 interface Props {
   loggedIn: iUserData;
   setLoggedIn: React.Dispatch<React.SetStateAction<iUserData>>;
+  togglePostRefresh: boolean;
+  setTogglePostRefresh: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export default function Saved(props: Props): JSX.Element {
-  console.log(props.loggedIn.user_id);
   const [savedRecoms, setSavedRecoms] = useState<iRecentRecommendation[]>([]);
   useEffect(() => {
     const fetchSavedRecoms = async () => {
@@ -25,7 +26,12 @@ export default function Saved(props: Props): JSX.Element {
   }, [props.loggedIn]);
   return (
     <>
-      <Header loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} />
+      <Header
+        loggedIn={props.loggedIn}
+        setLoggedIn={props.setLoggedIn}
+        togglePostRefresh={props.togglePostRefresh}
+        setTogglePostRefresh={props.setTogglePostRefresh}
+      />
       <>
         <h1>{props.loggedIn.name}'s Saved Recommendations</h1>
         <ShowSearchMatches

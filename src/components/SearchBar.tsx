@@ -8,6 +8,7 @@ import { iUserData } from "../Interface";
 interface Props {
   loggedIn: iUserData;
   setLoggedIn: React.Dispatch<React.SetStateAction<iUserData>>;
+  togglePostRefresh: boolean;
 }
 
 export default function SearchBar(props: Props): JSX.Element {
@@ -23,9 +24,7 @@ export default function SearchBar(props: Props): JSX.Element {
       setFilteredData(jsonBody);
     };
     fetchAllData();
-  }, [clearSearch]);
-
-  console.log(baseURL + selector + "/" + search);
+  }, [clearSearch, props.togglePostRefresh]);
 
   const handleSearchClick = async () => {
     if (search !== "") {
