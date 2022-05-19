@@ -34,7 +34,6 @@ export default function ShowSearchMatches(props: IProps): JSX.Element {
 
   return (
     <div className="search-component">
-      <h1>Search Results</h1>
       <div className="search-results">
         {props.filteredData?.map((x, i) => (
           <motion.div
