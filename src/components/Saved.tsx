@@ -22,7 +22,7 @@ export default function Saved(props: Props): JSX.Element {
       setSavedRecoms(jsonBody);
     };
     fetchSavedRecoms();
-  }, [props.loggedIn.user_id]);
+  }, [props.loggedIn]);
   return (
     <>
       <Header loggedIn={props.loggedIn} setLoggedIn={props.setLoggedIn} />
