@@ -39,9 +39,13 @@ export default function PopUpPost(props: Props): JSX.Element {
       postData.url !== "" &&
       postData.tags.length !== 0
     ) {
-      await axios.post(baseURL, postData);
-      setPostData(emptyPostData);
-      window.alert("your recommendation was successfully posted");
+      const response = await axios.post(baseURL, postData);
+      if (typeof response.data === "string"){
+        window.alert("This URL has already been posted!");
+      }else{
+        setPostData(emptyPostData); 
+        window.alert("your recommendation was successfully posted");
+      }
     } else {
       window.alert("please fill the required fields before submitting");
     }

@@ -81,7 +81,7 @@ export default function ShowRecent(props: Props): JSX.Element {
               <h1>{x.title}</h1>
               <p>Author: {x.author}</p>
 
-              <a href={x.url}>Vist</a>
+              <a href={x.url}>{x.url}</a>
               <p>{x.rating}</p>
               <p>{x.description}</p>
               <div className="tags">
