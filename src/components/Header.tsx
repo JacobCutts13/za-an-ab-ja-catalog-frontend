@@ -36,6 +36,7 @@ export default function Header(props: Props): JSX.Element {
     <div className="header">
       <h1>Recommendations Navbar</h1>
       <div className="select-sign-in">
+        <Link to="/">Home</Link>
         {props.loggedIn.name !== "" && (
           <>
             {" "}
@@ -48,6 +49,7 @@ export default function Header(props: Props): JSX.Element {
         )}{" "}
         {props.loggedIn.name === "" && (
           <select
+            value={props.loggedIn.name}
             onChange={(e) => {
               props.setLoggedIn(filterUsersByName(e.target.value));
               console.log("from Header", filterUsersByName(e.target.value));

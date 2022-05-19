@@ -60,11 +60,14 @@ export default function SearchBar(props: Props): JSX.Element {
       </button>
       <PopularTags setFilteredData={setFilteredData} />
       {filteredData !== undefined && (
-        <ShowSearchMatches
-          filteredData={filteredData}
-          loggedIn={props.loggedIn}
-          setLoggedIn={props.setLoggedIn}
-        />
+        <>
+          <h1>Search Results</h1>
+          <ShowSearchMatches
+            filteredData={filteredData}
+            loggedIn={props.loggedIn}
+            setLoggedIn={props.setLoggedIn}
+          />
+        </>
       )}
     </>
   );

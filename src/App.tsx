@@ -24,7 +24,10 @@ function App(): JSX.Element {
               </>
             }
           />
-          <Route path="/saved" element={<Saved />} />
+          <Route
+            path="/saved"
+            element={<Saved loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+          />
         </Routes>
       </BrowserRouter>
     </>
