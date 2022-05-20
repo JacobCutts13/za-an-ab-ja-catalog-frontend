@@ -10,7 +10,7 @@ import { iUserData } from "./Interface";
 
 function App(): JSX.Element {
   const [loggedIn, setLoggedIn] = useState<iUserData>(emptyUserData);
-  
+  const [togglePostRefresh, setTogglePostRefresh] = useState<boolean>(false);
 
   return (
     <>
@@ -20,15 +20,35 @@ function App(): JSX.Element {
             path="/"
             element={
               <>
-                <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} />{" "}
-                <ShowRecent loggedIn={loggedIn} setLoggedIn={setLoggedIn} />{" "}
-                <SearchBar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+                <Header
+                  loggedIn={loggedIn}
+                  setLoggedIn={setLoggedIn}
+                  togglePostRefresh={togglePostRefresh}
+                  setTogglePostRefresh={setTogglePostRefresh}
+                />{" "}
+                <ShowRecent
+                  loggedIn={loggedIn}
+                  setLoggedIn={setLoggedIn}
+                  togglePostRefresh={togglePostRefresh}
+                />{" "}
+                <SearchBar
+                  loggedIn={loggedIn}
+                  setLoggedIn={setLoggedIn}
+                  togglePostRefresh={togglePostRefresh}
+                />
               </>
             }
           />
           <Route
             path="/saved"
-            element={<Saved loggedIn={loggedIn} setLoggedIn={setLoggedIn} />}
+            element={
+              <Saved
+                loggedIn={loggedIn}
+                setLoggedIn={setLoggedIn}
+                togglePostRefresh={togglePostRefresh}
+                setTogglePostRefresh={setTogglePostRefresh}
+              />
+            }
           />
         </Routes>
       </BrowserRouter>

@@ -8,6 +8,7 @@
   width: 80%;
   margin: 100px auto;
 }
+
 .inner-recent-slider {
   display: flex;
 }
@@ -23,8 +24,21 @@
   padding: 30px;
 }
 
-.problems {
-  background-color: red;
+.challenges {
+  background-color: #c6776c;
+}
+
+.book {
+  background-color: #c0a9da;
+}
+
+.website {
+  background-color: #9cb380;
+}
+
+.video {
+  /* background-color: #ba97c1; */
+  background-color: #a3cbe1;
 }
 
 .tags {
@@ -61,24 +75,24 @@
 
 .popularTags {
   display: inline;
-
   margin: 10px;
   justify-content: center;
-
   font-size: 30px;
   border: 1px solid;
   border-radius: 3px;
   text-align: center;
   padding: 10px;
-  background-color: rgb(231, 142, 142);
+  background-color: #d8f2ef;
   border-radius: 10px;
   text-align: center;
+  cursor: pointer;
 }
 
 .modal {
   background-color: rgb(110, 110, 247);
   font-size: 12px;
 }
+
 .modal > .header {
   width: 100%;
   border-bottom: 1px solid gray;
@@ -86,16 +100,19 @@
   text-align: center;
   padding: 5px;
 }
+
 .modal > .content {
   width: 100%;
   padding: 10px 5px;
 }
+
 .modal > .actions {
   width: 100%;
   padding: 10px 5px;
   margin: auto;
   text-align: center;
 }
+
 .modal > .close {
   cursor: pointer;
   position: absolute;
