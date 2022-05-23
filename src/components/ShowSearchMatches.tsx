@@ -7,6 +7,7 @@ import { baseURL } from "../utils/urls";
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { iLikes } from "../Interface";
 
 interface IProps {
   filteredData: iRecentRecommendation[];
@@ -40,6 +41,18 @@ export default function ShowSearchMatches(props: IProps): JSX.Element {
       props.setLoggedIn(result.data[0]);
     }
   }
+  const [likedRecom, setLikedRecom] = useState<iLikes[]>([]);
+  useEffect(() => {
+    const fetchLikes = async () => {
+      const response = await fetch(baseURL + "likes/" + props.loggedIn.user_id);
+      const jsonBody: iLikes[] = await response.json();
+      setLikedRecom(jsonBody);
+      console.log(jsonBody);
+    };
+    fetchLikes();
+  }, [props.loggedIn]);
+
+  console.log(likedRecom);
 
   return (
     <div className="search-component">

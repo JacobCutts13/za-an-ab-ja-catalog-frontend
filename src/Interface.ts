@@ -32,3 +32,8 @@ export interface iUserData {
   is_faculty: boolean;
   saved_recommendations: number[];
 }
+
+export interface iLikes {
+  post_id:number;
+  likes:number;
+}
