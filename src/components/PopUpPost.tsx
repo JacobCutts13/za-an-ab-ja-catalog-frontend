@@ -35,6 +35,19 @@ export default function PopUpPost(props: Props): JSX.Element {
   const [postData, setPostData] = useState<iPostRecommendation>(emptyPostData);
   const [tag, setTag] = useState<string>("");
 
+  const url = "https://discord.com/api/webhooks/978222537626501190/BCCKteCgEiUrU0M8Ekm0vT9q_wP9IaWN3CeUhJDFvn5v5GD9GSrtmQfD742vP0TWHbvj";
+  
+
+  function sendMessage(message: iPostRecommendation) {
+   fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({"username": "Academy Post Bot", "content": `New recommended post 👉 [${message.author}](${message.url})`})
+    });
+}
+
   async function submitClick() {
     if (
       postData.author !== "" &&
@@ -49,6 +62,10 @@ export default function PopUpPost(props: Props): JSX.Element {
         window.alert("your recommendation was successfully posted");
         props.setTogglePostRefresh(!props.togglePostRefresh);
       }
+      await axios.post(baseURL, postData);
+      setPostData(emptyPostData);
+      window.alert("your recommendation was successfully posted")
+      sendMessage(postData);
     } else {
       window.alert("please fill the required fields before submitting");
     }
