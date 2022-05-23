@@ -5,6 +5,8 @@ import { motion } from "framer-motion";
 import { iUserData } from "../Interface";
 import { baseURL } from "../utils/urls";
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 
 interface IProps {
   filteredData: iRecentRecommendation[];
