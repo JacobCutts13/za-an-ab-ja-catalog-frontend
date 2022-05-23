@@ -34,6 +34,6 @@ export interface iUserData {
 }
 
 export interface iLikes {
-  post_id:number;
-  likes:number;
+  post_id: number;
+  likes: number;
 }

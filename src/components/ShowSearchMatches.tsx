@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import { iUserData } from "../Interface";
 import { baseURL } from "../utils/urls";
 import axios from "axios";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { solid } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
 import { iLikes } from "../Interface";
 
 interface IProps {
@@ -81,7 +81,6 @@ export default function ShowSearchMatches(props: IProps): JSX.Element {
             <p>{x.content_type}</p>
             <a href={x.url}>Vist</a>
             <p>{x.rating}</p>
-
             <div className="tags">
               {x.tags.map((y, idx) => (
                 <p className="tag" key={idx}>
@@ -89,7 +88,9 @@ export default function ShowSearchMatches(props: IProps): JSX.Element {
                 </p>
               ))}
             </div>
-
+            <FontAwesomeIcon icon={solid("heart")} />
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <FontAwesomeIcon icon={solid("heart-broken")} />
             {isExpandedArray[i] && (
               <motion.div layout className="search-tile-description">
                 <p>{x.description}</p>
