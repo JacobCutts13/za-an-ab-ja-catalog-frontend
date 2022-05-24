@@ -6,6 +6,7 @@ import { iRecentRecommendation } from "../Interface";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { iUserData } from "../Interface";
+import Comments from "../components/Comments"
 
 interface Props {
   loggedIn: iUserData;
@@ -91,7 +92,9 @@ export default function ShowRecent(props: Props): JSX.Element {
                     #{y}
                   </p>
                 ))}
+              
               </div>
+              <Comments id={x.id}/>
             </motion.div>
           ))}
         </motion.div>
