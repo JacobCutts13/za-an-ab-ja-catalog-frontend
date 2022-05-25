@@ -15,7 +15,7 @@ function App(): JSX.Element {
   return (
     <>
       <BrowserRouter>
-        <Routes>
+        <Routes >
           <Route
             path="/"
             element={
@@ -50,6 +50,8 @@ function App(): JSX.Element {
               />
             }
           />
+      
+
         </Routes>
       </BrowserRouter>
     </>

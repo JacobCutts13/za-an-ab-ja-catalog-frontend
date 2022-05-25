@@ -86,7 +86,7 @@ export default function PopUpPost(props: Props): JSX.Element {
 
   return (
     <Popup
-      trigger={<button className="button"> New Recommendation </button>}
+      trigger={<button className="button">+ New Recommendation </button>}
       modal
       nested
     >
@@ -95,7 +95,7 @@ export default function PopUpPost(props: Props): JSX.Element {
           <button className="close" onClick={close}>
             &times;
           </button>
-          <div className="header"> Modal Title </div>
+          <div className="header"> Add Recommendation </div>
           <input
             placeholder="Title"
             value={postData.title}
@@ -191,7 +191,7 @@ export default function PopUpPost(props: Props): JSX.Element {
           </select>
 
           <br />
-          <h4>Add Tag</h4>
+          <h4>Add Tags</h4>
           <input
             placeholder="tag"
             value={tag}

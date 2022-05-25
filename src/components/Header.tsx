@@ -33,18 +33,20 @@ export default function Header(props: Props): JSX.Element {
   };
 
   return (
+    <div className="all">
     <div className="header">
-      <h1>Recommendations Navbar</h1>
       <div className="select-sign-in">
+      <h1>Academy Build Recommendations</h1>
         <Link to="/">Home</Link>
         {props.loggedIn.name !== "" && (
           <>
+          
             {" "}
             <h3>Logged in as {props.loggedIn.name}</h3>
             <button onClick={() => props.setLoggedIn(emptyUserData)}>
               Log Out
             </button>{" "}
-            <Link to="/saved">Saved</Link>
+            <Link to="/saved">View Saved</Link>
           </>
         )}{" "}
         {props.loggedIn.name === "" && (
@@ -61,6 +63,7 @@ export default function Header(props: Props): JSX.Element {
           </select>
         )}
       </div>
+      <br/>
       {props.loggedIn.user_id !== -1 && (
         <PopUpPost
           user_id={props.loggedIn.user_id}
@@ -68,6 +71,7 @@ export default function Header(props: Props): JSX.Element {
           setTogglePostRefresh={props.setTogglePostRefresh}
         />
       )}
+    </div>
     </div>
   );
 }

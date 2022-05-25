@@ -32,6 +32,7 @@ export default function PopularTags(props: IProps): JSX.Element {
 
   return (
     <>
+    <div className="all">
       <h2>Popular Tags</h2>
 
       {tags
@@ -45,6 +46,7 @@ export default function PopularTags(props: IProps): JSX.Element {
             {tag}
           </div>
         ))}
+           </div>
     </>
   );
 }

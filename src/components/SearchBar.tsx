@@ -38,10 +38,12 @@ export default function SearchBar(props: Props): JSX.Element {
 
   return (
     <>
+      
+      <div className="search-input">
       <input
         onChange={(e) => setSearch(e.target.value)}
         value={search}
-        className="search-input"
+  
       ></input>
       <select onChange={(e) => setSelector(e.target.value)} value={selector}>
         <option>All</option>
@@ -70,6 +72,7 @@ export default function SearchBar(props: Props): JSX.Element {
           />
         </>
       )}
+      </div>
     </>
   );
 }
