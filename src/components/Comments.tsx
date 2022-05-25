@@ -22,11 +22,11 @@ export default function Comments(props: iPostId): JSX.Element {
 
   useEffect(() => {
     async function getAllComments() {
-      const result = await axios.get(baseURL + "comments" + "/" + props.id);
+      const result = await axios.get(baseURL + "comments/" + props.id);
       setAllComments(result.data);
     }
     getAllComments();
-  }, [submitToggle, deleteToggle]);
+  }, [submitToggle, deleteToggle, props.id]);
 
   async function submitComment() {
     setSubmitToggle((prev) => !prev);
