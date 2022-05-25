@@ -4,16 +4,15 @@
     Ubuntu, sans-serif;
   width: 100%;
   height: 100%;
-  margin:10%;
+  margin: 10%;
 }
 
-.header{
-  display:inline-flex;
-  align-items:center;
+.header {
+  display: inline-flex;
+  align-items: center;
   justify-items: center;
   flex-direction: column;
 }
-
 
 .recent-component {
   text-align: center;
@@ -61,7 +60,7 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items:center;
+  align-items: center;
 }
 
 .tag {
@@ -71,7 +70,6 @@
   padding: 2px;
   background-color: #fff;
 }
-
 
 .search-results {
   display: grid;
@@ -87,8 +85,8 @@
   height: auto;
 }
 
-.search-input{
-  margin:10%;
+.search-input {
+  margin: 10%;
 }
 
 .clickable {
@@ -99,20 +97,20 @@
   display: inline;
   justify-content: center;
   font-size: 20px;
-  margin:5px;
+  margin: 5px;
   border: 1px solid;
   border-radius: 10px;
   text-align: center;
   padding: 10px;
   background-color: #d8f2ef;
-  text-align:center;
+  text-align: center;
   cursor: pointer;
 }
 
 .modal {
   background-color: rgb(224, 237, 197);
   font-size: 18px;
-  border-radius:15px;
+  border-radius: 15px;
   padding: 5px;
 }
 
@@ -157,6 +155,3 @@
 .red {
   color: red;
 }
-
-
-

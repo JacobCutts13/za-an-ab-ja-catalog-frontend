@@ -11,7 +11,6 @@ import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- i
 import { iLikes } from "../Interface";
 import getLikesFromId from "../utils/getLikesFromId";
 
-
 interface IProps {
   filteredData: iRecentRecommendation[];
   loggedIn: iUserData;

@@ -34,44 +34,43 @@ export default function Header(props: Props): JSX.Element {
 
   return (
     <div className="all">
-    <div className="header">
-      <div className="select-sign-in">
-      <h1>Academy Build Recommendations</h1>
-        <Link to="/">Home</Link>
-        {props.loggedIn.name !== "" && (
-          <>
-          
-            {" "}
-            <h3>Logged in as {props.loggedIn.name}</h3>
-            <button onClick={() => props.setLoggedIn(emptyUserData)}>
-              Log Out
-            </button>{" "}
-            <Link to="/saved">View Saved</Link>
-          </>
-        )}{" "}
-        {props.loggedIn.name === "" && (
-          <select
-            value={props.loggedIn.name}
-            onChange={(e) => {
-              props.setLoggedIn(filterUsersByName(e.target.value));
-            }}
-          >
-            <option>Select user</option>
-            {users.map((userName) => (
-              <option key={userName.user_id}>{userName.name}</option>
-            ))}
-          </select>
+      <div className="header">
+        <div className="select-sign-in">
+          <h1>Academy Build Recommendations</h1>
+          <Link to="/">Home</Link>
+          {props.loggedIn.name !== "" && (
+            <>
+              {" "}
+              <h3>Logged in as {props.loggedIn.name}</h3>
+              <button onClick={() => props.setLoggedIn(emptyUserData)}>
+                Log Out
+              </button>{" "}
+              <Link to="/saved">View Saved</Link>
+            </>
+          )}{" "}
+          {props.loggedIn.name === "" && (
+            <select
+              value={props.loggedIn.name}
+              onChange={(e) => {
+                props.setLoggedIn(filterUsersByName(e.target.value));
+              }}
+            >
+              <option>Select user</option>
+              {users.map((userName) => (
+                <option key={userName.user_id}>{userName.name}</option>
+              ))}
+            </select>
+          )}
+        </div>
+        <br />
+        {props.loggedIn.user_id !== -1 && (
+          <PopUpPost
+            user_id={props.loggedIn.user_id}
+            togglePostRefresh={props.togglePostRefresh}
+            setTogglePostRefresh={props.setTogglePostRefresh}
+          />
         )}
       </div>
-      <br/>
-      {props.loggedIn.user_id !== -1 && (
-        <PopUpPost
-          user_id={props.loggedIn.user_id}
-          togglePostRefresh={props.togglePostRefresh}
-          setTogglePostRefresh={props.setTogglePostRefresh}
-        />
-      )}
-    </div>
     </div>
   );
 }

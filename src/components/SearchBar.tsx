@@ -38,40 +38,38 @@ export default function SearchBar(props: Props): JSX.Element {
 
   return (
     <>
-      
       <div className="search-input">
-      <input
-        onChange={(e) => setSearch(e.target.value)}
-        value={search}
-  
-      ></input>
-      <select onChange={(e) => setSelector(e.target.value)} value={selector}>
-        <option>All</option>
-        <option>author</option>
-        <option>title</option>
-      </select>
-      <button onClick={() => handleSearchClick()} className="search-submit">
-        Search
-      </button>
-      <button
-        onClick={() => {
-          setClearSearch(!clearSearch);
-          setSearch("");
-        }}
-      >
-        Clear Search
-      </button>
-      <PopularTags setFilteredData={setFilteredData} />
-      {filteredData !== undefined && (
-        <>
-          <h1>Search Results</h1>
-          <ShowSearchMatches
-            filteredData={filteredData}
-            loggedIn={props.loggedIn}
-            setLoggedIn={props.setLoggedIn}
-          />
-        </>
-      )}
+        <input
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+        ></input>
+        <select onChange={(e) => setSelector(e.target.value)} value={selector}>
+          <option>All</option>
+          <option>author</option>
+          <option>title</option>
+        </select>
+        <button onClick={() => handleSearchClick()} className="search-submit">
+          Search
+        </button>
+        <button
+          onClick={() => {
+            setClearSearch(!clearSearch);
+            setSearch("");
+          }}
+        >
+          Clear Search
+        </button>
+        <PopularTags setFilteredData={setFilteredData} />
+        {filteredData !== undefined && (
+          <>
+            <h1>Search Results</h1>
+            <ShowSearchMatches
+              filteredData={filteredData}
+              loggedIn={props.loggedIn}
+              setLoggedIn={props.setLoggedIn}
+            />
+          </>
+        )}
       </div>
     </>
   );
