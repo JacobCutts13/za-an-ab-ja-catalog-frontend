@@ -14,7 +14,7 @@ interface Props {
 
 export default function Saved(props: Props): JSX.Element {
   const [savedRecoms, setSavedRecoms] = useState<iRecentRecommendation[]>([]);
-  
+
   useEffect(() => {
     const fetchSavedRecoms = async () => {
       const response = await fetch(
@@ -26,7 +26,6 @@ export default function Saved(props: Props): JSX.Element {
     fetchSavedRecoms();
   }, [props.loggedIn]);
 
-  
   return (
     <>
       <Header

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { iUserData } from "../Interface";
 import { baseURL } from "../utils/urls";
 import axios from "axios";
+import Comments from "../components/Comments";
 
 interface IProps {
   filteredData: iRecentRecommendation[];
@@ -80,6 +81,7 @@ export default function ShowSearchMatches(props: IProps): JSX.Element {
                 <p>{x.description}</p>
               </motion.div>
             )}
+            <Comments id={x.id} user={props.loggedIn.user_id} />
           </motion.div>
         ))}
       </div>
