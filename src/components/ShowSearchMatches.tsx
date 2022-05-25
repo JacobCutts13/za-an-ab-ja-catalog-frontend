@@ -5,10 +5,12 @@ import { motion } from "framer-motion";
 import { iUserData } from "../Interface";
 import { baseURL } from "../utils/urls";
 import axios from "axios";
+import Comments from "../components/Comments";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid } from "@fortawesome/fontawesome-svg-core/import.macro"; // <-- import styles to be used
 import { iLikes } from "../Interface";
 import getLikesFromId from "../utils/getLikesFromId";
+
 
 interface IProps {
   filteredData: iRecentRecommendation[];
@@ -85,6 +87,47 @@ export default function ShowSearchMatches(props: IProps): JSX.Element {
   return (
     <div className="search-component">
       <div className="search-results">
+        {props.filteredData?.map((x, i) => (
+          <motion.div
+            layout
+            className={"search-tile " + x.content_type + " clickable"}
+            key={x.id}
+            onClick={() => handleExpand(i)}
+          >
+            {props.loggedIn.user_id !== -1 && (
+              <div
+                className={
+                  props.loggedIn.saved_recommendations.includes(x.id)
+                    ? "fa fa-star checked"
+                    : "fa fa-star"
+                }
+                onClick={() => {
+                  saveRecommendation(props.loggedIn.user_id, x.id);
+                }}
+              ></div>
+            )}
+            <h1>{x.title}</h1>
+            <p>Author: {x.author}</p>
+            <p>{x.content_type}</p>
+            <a href={x.url}>Vist</a>
+            <p>{x.rating}</p>
+
+            <div className="tags">
+              {x.tags.map((y, idx) => (
+                <p className="tag" key={idx}>
+                  #{y}
+                </p>
+              ))}
+            </div>
+
+            {isExpandedArray[i] && (
+              <motion.div layout className="search-tile-description">
+                <p>{x.description}</p>
+              </motion.div>
+            )}
+            <Comments id={x.id} user={props.loggedIn.user_id} />
+          </motion.div>
+        ))}
         {props.filteredData?.map((recom, i) => {
           const likeValue = getLikesFromId(recom.id, likedRecom);
           return (
