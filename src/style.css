@@ -1,3 +1,19 @@
+.all {
+  display: inline-flex;
+  font-family: -apple-system, system-ui, "Segoe UI", Roboto, "Helvetica Neue",
+    Ubuntu, sans-serif;
+  width: 100%;
+  height: 100%;
+  margin: 10%;
+}
+
+.header {
+  display: inline-flex;
+  align-items: center;
+  justify-items: center;
+  flex-direction: column;
+}
+
 .recent-component {
   text-align: center;
 }
@@ -37,7 +53,6 @@
 }
 
 .video {
-  /* background-color: #ba97c1; */
   background-color: #a3cbe1;
 }
 
@@ -45,13 +60,14 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 
 .tag {
   border: 1px solid;
   border-radius: 3px;
   text-align: center;
-  padding: 5px;
+  padding: 2px;
   background-color: #fff;
 }
 
@@ -69,28 +85,33 @@
   height: auto;
 }
 
+.search-input {
+  margin: 10%;
+}
+
 .clickable {
   cursor: pointer;
 }
 
 .popularTags {
   display: inline;
-  margin: 10px;
   justify-content: center;
-  font-size: 30px;
+  font-size: 20px;
+  margin: 5px;
   border: 1px solid;
-  border-radius: 3px;
+  border-radius: 10px;
   text-align: center;
   padding: 10px;
   background-color: #d8f2ef;
-  border-radius: 10px;
   text-align: center;
   cursor: pointer;
 }
 
 .modal {
-  background-color: rgb(110, 110, 247);
-  font-size: 12px;
+  background-color: rgb(224, 237, 197);
+  font-size: 18px;
+  border-radius: 15px;
+  padding: 5px;
 }
 
 .modal > .header {

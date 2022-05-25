@@ -32,19 +32,21 @@ export default function PopularTags(props: IProps): JSX.Element {
 
   return (
     <>
-      <h2>Popular Tags</h2>
+      <div className="all">
+        <h2>Popular Tags</h2>
 
-      {tags
-        ?.filter((tag, idx, tags) => tags.indexOf(tag) === idx)
-        .map((tag, idx) => (
-          <div
-            key={idx}
-            className="popularTags"
-            onClick={() => fetchFilteredTags(tag)}
-          >
-            {tag}
-          </div>
-        ))}
+        {tags
+          ?.filter((tag, idx, tags) => tags.indexOf(tag) === idx)
+          .map((tag, idx) => (
+            <div
+              key={idx}
+              className="popularTags"
+              onClick={() => fetchFilteredTags(tag)}
+            >
+              {tag}
+            </div>
+          ))}
+      </div>
     </>
   );
 }
