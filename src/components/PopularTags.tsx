@@ -25,7 +25,7 @@ export default function PopularTags(props: IProps): JSX.Element {
 
   async function fetchFilteredTags(tagName: string) {
     console.log(baseURL + "tags/" + tagName);
-    const response = await fetch(baseURL + "tags/" + tagName);
+    const response = await fetch(baseURL + "search/tags/" + tagName);
     const jsonBody: iRecentRecommendation[] = await response.json();
     props.setFilteredData(jsonBody);
   }
